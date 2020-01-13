@@ -1,0 +1,21 @@
+.moviesList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.poster {
+    overflow: hidden;
+    margin: 20px 20px 20px 20px;
+}
+
+.poster img {
+    transition: all 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+.poster:hover img{
+    transform: scale(1.1);
+    object-fit: cover;
+}
