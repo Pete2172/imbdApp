@@ -73,8 +73,8 @@ function MoviePage({movieId}){
     
     const filteredWriter = () => {
         const {Writer} = movie;
-        console.log(Writer.split(','));
-        return Writer.split(',')
+
+        return (Writer.split(',').length === 1) ? Writer : Writer.split(',')
                 .filter(e => e.includes("(screenplay by"))
                 .join(',')
                 .replace(/\(screenplay by\)/g, "");

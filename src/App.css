@@ -2,10 +2,25 @@
   text-align: center;
   background-color: black;
   color: white;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas: 
+        "header"
+        "main"
+        "main"
+        "main"
+        "main";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header{
+  grid-area: header;
 }
+
+main{
+  grid-area: main;
+}
+
+
+
 

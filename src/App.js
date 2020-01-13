@@ -22,9 +22,9 @@ function App() {
       <header>
       <input type="text" value={search} placeholder="Type a title of a movie..." onChange={e => {setSearch(e.target.value); setMovieId("")}} />
       </header>
-      <section>
+      <main>
         {whichPage}
-      </section>    
+      </main>    
     </div>
   );
 }
