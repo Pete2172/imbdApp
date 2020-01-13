@@ -4,6 +4,11 @@ import './MoviePage.css';
 
 
 function MoviePage({movieId}){
+
+    const ratingsIcons = {"Internet Movie Database": "https://icons-for-free.com/iconfiles/png/512/films+imdb+internet+movie+database+movie+television+icon-1320192452769839815.png",
+                          "Rotten Tomatoes": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png",
+                          "Metacritic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Metacritic.svg/768px-Metacritic.svg.png"
+        };
     const [movie, setMovie] = useState({
         "Title":"Avengers: Endgame",
         "Year":"2019",
@@ -52,6 +57,26 @@ function MoviePage({movieId}){
                 .join(',')
                 .replace(/\(screenplay by\)/g, "");
     }
+
+    const ratings = (() => {
+        if(movie !== null){
+            if(movie.hasOwnProperty("Ratings")){
+                return movie.Ratings.map(e => {
+                    return <div className="ratingsInfo">
+                        <img src={ratingsIcons[e["Source"]]} />
+                        <span>{e.Value}</span>
+                    </div>;
+                });
+            }
+            else{
+                return <p>No ratings available</p>;
+            }
+        }
+        else{
+            return <p>No ratings available</p>;
+        }
+    })();
+
     return (
         <div className="movieGrid">
             <img className="gridPoster" src={movie.Poster} />
@@ -59,19 +84,20 @@ function MoviePage({movieId}){
             <p className="movieRuntime">{movie.Runtime}</p>
             <p className="moviePlot">{movie.Plot}</p>
             <div className="movieInfo">
-                <div className="movieInfoElem"><span>director: </span>{movie.Director}</div>
-                <div className="movieInfoElem"><span>screenplay: </span>{filteredWriter()}</div>
-                <div className="movieInfoElem"><span>genre: </span>{movie.Genre}</div>
-                <div className="movieInfoElem"><span>country: </span>{movie.Country}</div>
-                <div className="movieInfoElem"><span>released: </span>{movie.Released}</div>
-                <div className="movieInfoElem"><span>rating: </span>{movie.Rated}</div>
+                <div className="movieInfoElem"><span>Director: </span><span>{movie.Director}</span></div>
+                <div className="movieInfoElem"><span>Screenplay: </span>{filteredWriter()}</div>
+                <div className="movieInfoElem"><span>Genre: </span>{movie.Genre}</div>
+                <div className="movieInfoElem"><span>Country: </span>{movie.Country}</div>
+                <div className="movieInfoElem"><span>Released: </span>{movie.Released}</div>
+                <div className="movieInfoElem"><span>Rating: </span>{movie.Rated}</div>
+                <div className="movieInfoElem"><span>Cast: </span>{movie.Actors}</div>
             </div>
             <div className="ratingsMovie">
-                Hello
+                {ratings}
             </div>
             <div className="watchFav">
-                <IoMdEye className="eyeIcon" />
-                <IoIosHeart className="heartIcon" />
+                <div className="eyeIcon"><IoMdEye /></div>
+                <div className="heartIcon"><IoIosHeart style={{verticalAlign: 'baseline'}}/></div>
             </div>
         </div>
     )
