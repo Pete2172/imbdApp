@@ -7,21 +7,24 @@ import MoviePage from './components/MoviePage.js';
 function App() {
 
   const [search, setSearch] = useState("");
-  const [movieId, setMovieId] = useState(null);
+  const [movieId, setMovieId] = useState("");
   //<MovieSearch title={search} onClickHandler={() => {console.log("clicked!")}} />
   const chooseMovie = (id) => {
-    console.log("clicked");
+    setMovieId(id);
   }
-/*
+
   const whichPage = (()=> {
-    //return (movieId !== null) ?  <MoviePage movieId = {movieId} /> :  <MovieSearch title={search} onClickHandler={chooseMovie} />
+    return (movieId !== "") ?  <MoviePage movieId = {movieId} /> :  <MovieSearch title={search} onClickHandler={chooseMovie} />
   })();
-*/
+
   return (
     <div className="App">
-      <input type="text" value={search} placeholder="Type a title of a movie..." value="Avengers" onChange={e => setSearch(e.target.value)} />
-      <MovieSearch title={search} onClickHandler={chooseMovie} />
-    
+      <header>
+      <input type="text" value={search} placeholder="Type a title of a movie..." onChange={e => {setSearch(e.target.value); setMovieId("")}} />
+      </header>
+      <section>
+        {whichPage}
+      </section>    
     </div>
   );
 }
