@@ -10,45 +10,67 @@ function MoviePage({movieId}){
                           "Metacritic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Metacritic.svg/768px-Metacritic.svg.png"
         };
     const [movie, setMovie] = useState({
-        "Title":"Avengers: Endgame",
-        "Year":"2019",
-        "Rated":"PG-13",
-        "Released":"26 Apr 2019",
-        "Runtime":"181 min",
-        "Genre":"Action, Adventure, Drama, Sci-Fi",
-        "Director":"Anthony Russo, Joe Russo",
-        "Writer":"Christopher Markus (screenplay by), Stephen McFeely (screenplay by), Stan Lee (based on the Marvel comics by), Jack Kirby (based on the Marvel comics by), Joe Simon (Captain America created by), Jack Kirby (Captain America created by), Steve Englehart (Star-Lord created by), Steve Gan (Star-Lord created by), Bill Mantlo (Rocket Raccoon created by), Keith Giffen (Rocket Raccoon created by), Jim Starlin (Thanos, Gamora & Drax created by), Stan Lee (Groot created by), Larry Lieber (Groot created by), Jack Kirby (Groot created by), Steve Englehart (Mantis created by), Don Heck (Mantis created by)",
-        "Actors":"Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth",
-        "Plot":"After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
-        "Language":"English, Japanese, Xhosa, German",
-        "Country":"USA",
-        "Awards":"Nominated for 1 BAFTA Film Award. Another 32 wins & 75 nominations.",
-        "Poster":"https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
+        "Title":"",
+        "Year":"",
+        "Rated":"",
+        "Released":"",
+        "Runtime":"",
+        "Genre":"",
+        "Director":"",
+        "Writer":"",
+        "Actors":"",
+        "Plot":"",
+        "Language":"",
+        "Country":"",
+        "Awards":"",
+        "Poster":"",
         "Ratings":[
         {
         "Source":"Internet Movie Database",
-        "Value":"8.5/10"
+        "Value":""
         },
         {
         "Source":"Rotten Tomatoes",
-        "Value":"94%"
+        "Value":""
         },
         {
         "Source":"Metacritic",
-        "Value":"78/100"
+        "Value":""
         }],
-        "Metascore":"78",
-        "imdbRating":"8.5",
-        "imdbVotes":"640,310",
-        "imdbID":"tt4154796",
-        "Type":"movie",
-        "DVD":"30 Jul 2019",
-        "BoxOffice":"N/A",
-        "Production":"Marvel Studios",
-        "Website":"N/A",
-        "Response":"True",
+        "Metascore":"",
+        "imdbRating":"",
+        "imdbVotes":"",
+        "imdbID":"",
+        "Type":"",
+        "DVD":"",
+        "BoxOffice":"",
+        "Production":"",
+        "Website":"",
+        "Response":"",
         });
+    
+    const [url, setUrl] = useState(`https://movie-database-imdb-alternative.p.rapidapi.com/?i=${movieId}&r=json`)
 
+    useEffect(() => {
+        const fetchMovieData = async () =>{
+            fetch(url, {
+	            "method": "GET",
+	            "headers": {
+		        "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
+		    "x-rapidapi-key": "4d1910cdadmsh451bc57530aeb39p1a93ebjsn853bad1781c1"
+	        }
+        })
+        .then(async (response) => {
+            const responseJSON = await response.json();
+            setMovie(responseJSON);
+        })
+        .catch(err => {
+	        console.log(err);
+        });
+        }
+        fetchMovieData();
+    }, [movieId]);
+    
     const filteredWriter = () => {
         const {Writer} = movie;
         console.log(Writer.split(','));

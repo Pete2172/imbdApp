@@ -6,11 +6,11 @@ function MovieSearch({title, onClickHandler}){
 
     const [movies, setMovies] = useState(null);
     const [url, setUrl] = useState(`https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=${title}`);
-
-    const clickFunc = useCallback(() =>{
-
+/*
+    const clickFunc = useCallback((id) =>{
+        console.log("Im inside")
     }, [onClickHandler]);
-
+*/
     useEffect(() => {
         setUrl(`https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=${title}`);
     }, [title]);
@@ -42,7 +42,7 @@ function MovieSearch({title, onClickHandler}){
                 const caption = `${Title}, ${Year}, ${Type}`;
                 const idComp = `${imbdID} + ${index}`;
                 index++;
-                return <div className="poster" key={idComp}>
+                return <div className="poster" key={idComp} onClick = {onClickHandler(movies.imbdID)} >
                     <div className="overlay">
                         <img src={Poster} alt={caption} />
                         <a className="link"><p>{Title}</p><p>{Year}</p></a>
