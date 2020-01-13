@@ -48,6 +48,26 @@
     margin: 0 10px;
 }
 
+.watchFav {
+    display: flex;
+    grid-area: f;
+}
+
+.watchFav .heartIcon{
+    flex: 1;
+}
+
+.watchFav .heartIcon:hover {
+    color: yellow;
+}
+
+.watchFav .eyeIcon{
+    flex: 1;
+}
+
+.watchFav .eyeIcon:hover{
+    color: green;
+}
 
 
 .movieGrid{
@@ -66,7 +86,7 @@
     "p i i g g"
     "p i i g g"
     "p i i g g"
-    "p i i g g"
+    "f i i g g"
     ;
 }
 

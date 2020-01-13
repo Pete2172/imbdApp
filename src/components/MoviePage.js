@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {IoMdEye, IoIosHeart} from 'react-icons/io';
 import './MoviePage.css';
 
 
@@ -69,7 +70,8 @@ function MoviePage({movieId}){
                 Hello
             </div>
             <div className="watchFav">
-                
+                <IoMdEye className="eyeIcon" />
+                <IoIosHeart className="heartIcon" />
             </div>
         </div>
     )
