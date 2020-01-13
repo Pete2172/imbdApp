@@ -1,21 +1,13 @@
-.movieGrid{
-    display: grid;
-    grid-template-areas: 
-    "p p p t t t t t t"
-    "p p p r r r r r r"
-    "p p p d d d d d d"
-    "p p p i i i i i i"
-    ". . . i i i i i i"
-    ". . . i i i i i i"
-    ". . . i i i i i i"
-    ". . . i i i i i i"
-    ". . . i i i i i i"
-    ;
-}
 
 .movieGrid .gridPoster{
     grid-area: p;
+    margin: 20px 20px 20px 20px;
 }
+
+.movieGrid .gridPoster:hover{
+    opacity: 0.8;
+}
+
 
 .movieGrid h{
     grid-area: t;
@@ -24,26 +16,61 @@
 
 .movieGrid .movieRuntime{
     grid-area: r;
+    max-height: 5px;
 }
 
 .movieGrid .moviePlot{
     grid-area: d;
 }
 
-.movieGrid .movieInfo{
+.movieInfo{
     grid-area: i;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    align-items: center;
+    border: 2px solid white;
+    margin: 10px 10px 10px 10px;
+}
+
+.ratingsMovie{
+    grid-area: g;
+    border: 2px solid white;
     display: flex;
 }
 
 .movieInfoElem {
-    flex: 1 50%;
-    flex-direction: row;
+    display: flex;
 }
 
 .movieInfoElem span {
     color: yellow;
-
+    margin: 0 10px;
 }
+
+
+
+.movieGrid{
+    border: 1px solid yellow;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-areas: 
+    "p t t t t"
+    "p r r r r"
+    "p d d d d"
+    "p d d d d"
+    "p i i g g"
+    "p i i g g"
+    "p i i g g"
+    "p i i g g"
+    "p i i g g"
+    "p i i g g"
+    ;
+}
+
+
 
 
 

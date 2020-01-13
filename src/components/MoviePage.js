@@ -58,12 +58,18 @@ function MoviePage({movieId}){
             <p className="movieRuntime">{movie.Runtime}</p>
             <p className="moviePlot">{movie.Plot}</p>
             <div className="movieInfo">
-                <div className="movieInfoElem"><span>director: </span><p>{movie.Director}</p></div>
-                <div className="movieInfoElem"><span>screenplay: </span><p>{filteredWriter()}</p></div>
-                <div className="movieInfoElem"><span>genre: </span><p>{movie.Genre}</p></div>
-                <div className="movieInfoElem"><span>country: </span><p>{movie.Country}</p></div>
-                <div className="movieInfoElem"><span>released: </span><p>{movie.Released}</p></div>
-                <div className="movieInfoElem"><span>rating: </span><p>{movie.Rated}</p></div>
+                <div className="movieInfoElem"><span>director: </span>{movie.Director}</div>
+                <div className="movieInfoElem"><span>screenplay: </span>{filteredWriter()}</div>
+                <div className="movieInfoElem"><span>genre: </span>{movie.Genre}</div>
+                <div className="movieInfoElem"><span>country: </span>{movie.Country}</div>
+                <div className="movieInfoElem"><span>released: </span>{movie.Released}</div>
+                <div className="movieInfoElem"><span>rating: </span>{movie.Rated}</div>
+            </div>
+            <div className="ratingsMovie">
+                Hello
+            </div>
+            <div className="watchFav">
+                
             </div>
         </div>
     )
