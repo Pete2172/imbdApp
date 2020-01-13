@@ -5,11 +5,11 @@ import MovieSearch from './components/MovieSearch.js';
 
 function App() {
 
-  const [search, setSearch] = useState("Avengers");
+  const [search, setSearch] = useState("");
 
   return (
     <div className="App">
-      <input type="text" value={search} onChange={e => setSearch(e.target.value)} />
+      <input type="text" value={search} placeholder="Type a title of a movie..." onChange={e => setSearch(e.target.value)} />
       <MovieSearch title={search} onClickHandler={() => {console.log("clicked!")}} />
     </div>
   );
