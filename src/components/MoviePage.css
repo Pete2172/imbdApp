@@ -4,7 +4,7 @@
     margin: 20px 20px 20px 20px;
 }
 
-.movieGrid .gridPoster:hover{
+.movieGrid .gridPoster img:hover{
     opacity: 0.6;
 }
 
@@ -79,7 +79,8 @@
 
 .watchFav .heartIcon:hover {
     flex: 1;
-    color: yellow;
+    color: black;
+    background-color: yellow;
 }
 
 .watchFav .eyeIcon{

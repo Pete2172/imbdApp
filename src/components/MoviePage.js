@@ -79,7 +79,13 @@ function MoviePage({movieId}){
 
     return (
         <div className="movieGrid">
-            <img className="gridPoster" src={movie.Poster} />
+            <div className="gridPoster">
+                <img src={movie.Poster} />
+                <div className="watchFav">
+                    <div className="eyeIcon"><IoMdEye /></div>
+                    <div className="heartIcon"><IoIosHeart style={{verticalAlign: 'baseline'}}/></div>
+                </div>
+            </div>
             <h>{movie.Title} ({movie.Year})</h>
             <p className="movieRuntime">{movie.Runtime}</p>
             <p className="moviePlot">{movie.Plot}</p>
@@ -94,10 +100,6 @@ function MoviePage({movieId}){
             </div>
             <div className="ratingsMovie">
                 {ratings}
-            </div>
-            <div className="watchFav">
-                <div className="eyeIcon"><IoMdEye /></div>
-                <div className="heartIcon"><IoIosHeart style={{verticalAlign: 'baseline'}}/></div>
             </div>
         </div>
     )
