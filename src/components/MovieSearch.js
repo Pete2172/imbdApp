@@ -12,6 +12,10 @@ function MovieSearch({title, onClickHandler}){
     }, [onClickHandler]);
 
     useEffect(() => {
+        
+    }, [title]);
+
+    useEffect(() => {
         const defFetch = async () => {
             fetch(url, {
 	                "method": "GET",
@@ -31,15 +35,20 @@ function MovieSearch({title, onClickHandler}){
         defFetch();
     }, [url]);
     if(movies !== null){
-        let index = 0;
-        const moviesList = movies.Search.map(e => {
-            const {Title, Year, imbdID, Type, Poster} = e;
-            const caption = `${Title}, ${Year}, ${Type}`;
-            const idComp = `${imbdID} + ${index}`;
-            index++;
-            return <div className="poster" key={idComp}><img src={Poster} alt={caption} /></div>
-        });
-        return <div className="moviesList">{moviesList}</div>
+        if(!movies.hasOwnProperty("Error")){
+            let index = 0;
+            const moviesList = movies.Search.map(e => {
+                const {Title, Year, imbdID, Type, Poster} = e;
+                const caption = `${Title}, ${Year}, ${Type}`;
+                const idComp = `${imbdID} + ${index}`;
+                index++;
+                return <div className="poster" key={idComp}><img src={Poster} alt={caption} /></div>
+            });
+            return <div className="moviesList">{moviesList}</div>
+        }
+        else{
+            return <p></p>
+        }
     }
     else{
         return <p>Find your movie...</p>
