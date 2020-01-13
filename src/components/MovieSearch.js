@@ -12,7 +12,7 @@ function MovieSearch({title, onClickHandler}){
     }, [onClickHandler]);
 
     useEffect(() => {
-        
+        setUrl(`https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=${title}`);
     }, [title]);
 
     useEffect(() => {
@@ -42,12 +42,17 @@ function MovieSearch({title, onClickHandler}){
                 const caption = `${Title}, ${Year}, ${Type}`;
                 const idComp = `${imbdID} + ${index}`;
                 index++;
-                return <div className="poster" key={idComp}><img src={Poster} alt={caption} /></div>
+                return <div className="poster" key={idComp}>
+                    <div className="overlay">
+                        <img src={Poster} alt={caption} />
+                        <a className="link"><p>{Title}</p><p>{Year}</p></a>
+                    </div>
+                </div>
             });
             return <div className="moviesList">{moviesList}</div>
         }
         else{
-            return <p></p>
+            return <p>Find your movie...</p>
         }
     }
     else{
