@@ -30,24 +30,30 @@ ul {
   width: 50%;
   height: 40px;
   margin: 0;
+  overflow: hidden;
 }
 
 ul > li {
+  position: relative;
   color: black;
   font-weight: bold;
   width: 100%;
-  border-right: 1px dotted black;
   display: flex;
   align-items: center;
   justify-content: space-around;
   letter-spacing: 0.5px;
+  border: 2px solid black;
+  border-radius: 25px 0 25px 0px;
+  margin: 2px;
 }
 
-ul li:nth-of-type(3) {
-  border-right: none;
+ul > li:visited {
+  background-color: gray;
+  color: white;
 }
 
 li:hover{
+  overflow: hidden;
   cursor: pointer;
   background-color: grey;
   color: white;
@@ -57,6 +63,18 @@ li:hover{
 
 li img{
   width: 5%;
+}
+
+input[type="text"]{
+  background-color: white;
+  color: black;
+  width: 40%;
+  margin: 10px 10px;
+}
+
+input[type="text"]:focus{
+  background-color: grey;
+  color: white;
 }
 
 

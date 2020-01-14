@@ -40,7 +40,7 @@ function App() {
       case "viewed":
         return (viewed.length > 0) ? (viewed.map(e => {
           return <MoviePage movieId = {e} /> 
-        })) : <p>You haven't viewed any movies recently.</p> ;
+        })) : <h1>You haven't viewed any movies recently.</h1> ;
     }
     
   })();
