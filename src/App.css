@@ -7,18 +7,33 @@
   flex-direction: column;
 }
 
-.searchBar{
-  flex: 1;
-  display: flex;
+header{
+  width: 100%; /* Full width */
+  background-color: rgb(168, 158, 12);
 }
 
-.searchBar img{
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+li {
+  flex: 1;
+  align-items: center;
+}
+
+li:hover{
+  cursor: pointer;
+  background-color: grey;
+}
+
+
+li img{
   width: 5%;
 }
 
-.filmPage{
-  flex: 1;
-}
+
 
 
 

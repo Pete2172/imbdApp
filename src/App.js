@@ -20,16 +20,24 @@ function App() {
   return (
     <div className="App">
       <header>
-        <div className="searchBar">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" />
-          <input type="text" value={search} placeholder="Type a title of a movie..." onChange={e => {setSearch(e.target.value); setMovieId("")}} />
-        </div>
+        <h1>Internet Movie Database</h1>
       </header>
-      <body>
+      <nav>
+        <ul>
+          <li>
+              <input type="text" value={search} placeholder="Type a title of a movie..." onChange={e => {setSearch(e.target.value); setMovieId("")}} />
+          </li>
+          <li>Your favourites</li>
+          <li>Watched</li>
+          <li>Recently viewed</li>
+        </ul>
+        </nav>
+
+      <main>
         <div className="filmPage">
-            {whichPage}
+        <MovieSearch title="Avengers Endgame" onClickHandler={chooseMovie} />
         </div>
-      </body>    
+      </main>    
     </div>
   );
 }
