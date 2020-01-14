@@ -3,7 +3,7 @@ import {IoMdEye, IoIosHeart} from 'react-icons/io';
 import './MoviePage.css';
 
 
-function MoviePage({movieId}){
+function MoviePage({movieId, isFav, isWatched}){
 
     const ratingsIcons = {"Internet Movie Database": ["https://icons-for-free.com/iconfiles/png/512/films+imdb+internet+movie+database+movie+television+icon-1320192452769839815.png", 0],
                           "Rotten Tomatoes": ["https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png", 1],
@@ -94,7 +94,7 @@ function MoviePage({movieId}){
                 <img src={movie.Poster} />
                 <div className="watchFav">
                     <div className="eyeIcon" ><IoMdEye /></div>
-                    <div className="heartIcon"><IoIosHeart style={{verticalAlign: 'baseline'}}/></div>
+                    <div className="heartIcon"><IoIosHeart /></div>
                 </div>
             </div>
             <h1>{movie.Title} ({movie.Year})</h1>

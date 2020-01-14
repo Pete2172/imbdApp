@@ -4,6 +4,10 @@
     margin: 20px 20px 20px 20px;
 }
 
+.moviePoster > img{
+    border: 2px white solid;
+}
+
 .movieGrid .gridPoster img:hover{
     opacity: 0.6;
 }
@@ -69,15 +73,16 @@
     display: flex;
     grid-area: f;
     margin: 5px 5px 5px 5px;
-    border: 2px white solid;
 }
 
 
 
-.watchFav * {
+.watchFav > * {
     flex: 1;
     padding-top: 2px;
     padding-bottom: 0.5px;
+    margin: 2px 2px 2px 2px;
+    border: 2px solid white;
 }
 
 .watchFav .heartIcon:hover {
@@ -88,12 +93,11 @@
 
 .watchFav .eyeIcon{
     flex: 1;
-    border-right: white 2px solid;
 }
 
 .watchFav .eyeIcon:hover{
     color: rgb(0, 0, 0);
-    background-color: green;
+    background-color: rgb(43, 211, 43);
 }
 
 

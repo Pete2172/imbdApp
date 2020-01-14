@@ -20,11 +20,16 @@ function App() {
   return (
     <div className="App">
       <header>
-      <input type="text" value={search} placeholder="Type a title of a movie..." onChange={e => {setSearch(e.target.value); setMovieId("")}} />
+        <div className="searchBar">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" />
+          <input type="text" value={search} placeholder="Type a title of a movie..." onChange={e => {setSearch(e.target.value); setMovieId("")}} />
+        </div>
       </header>
-      <main>
-        {whichPage}
-      </main>    
+      <body>
+        <div className="filmPage">
+            {whichPage}
+        </div>
+      </body>    
     </div>
   );
 }
