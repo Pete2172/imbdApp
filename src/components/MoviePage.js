@@ -5,9 +5,9 @@ import './MoviePage.css';
 
 function MoviePage({movieId}){
 
-    const ratingsIcons = {"Internet Movie Database": "https://icons-for-free.com/iconfiles/png/512/films+imdb+internet+movie+database+movie+television+icon-1320192452769839815.png",
-                          "Rotten Tomatoes": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png",
-                          "Metacritic": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Metacritic.svg/768px-Metacritic.svg.png"
+    const ratingsIcons = {"Internet Movie Database": ["https://icons-for-free.com/iconfiles/png/512/films+imdb+internet+movie+database+movie+television+icon-1320192452769839815.png", 0],
+                          "Rotten Tomatoes": ["https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png", 1],
+                          "Metacritic": ["https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Metacritic.svg/768px-Metacritic.svg.png", 2]
         };
     const [movie, setMovie] = useState({
         "Title":"",
@@ -49,11 +49,9 @@ function MoviePage({movieId}){
         "Response":"",
         });
     
-    const [url, setUrl] = useState(`https://movie-database-imdb-alternative.p.rapidapi.com/?i=${movieId}&r=json`)
-
     useEffect(() => {
         const fetchMovieData = async () =>{
-            fetch(url, {
+            fetch(`https://movie-database-imdb-alternative.p.rapidapi.com/?i=${movieId}&r=json`, {
 	            "method": "GET",
 	            "headers": {
 		        "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
@@ -70,22 +68,13 @@ function MoviePage({movieId}){
         }
         fetchMovieData();
     }, [movieId]);
-    
-    const filteredWriter = () => {
-        const {Writer} = movie;
-
-        return (Writer.split(',').length === 1) ? Writer : Writer.split(',')
-                .filter(e => e.includes("(screenplay by"))
-                .join(',')
-                .replace(/\(screenplay by\)/g, "");
-    }
 
     const ratings = (() => {
         if(movie !== null){
             if(movie.hasOwnProperty("Ratings")){
                 return movie.Ratings.map(e => {
-                    return <div className="ratingsInfo">
-                        <img src={ratingsIcons[e["Source"]]} />
+                    return <div className="ratingsInfo" key={`ratingsIcon${ratingsIcons[e["Source"]][1]}`}>
+                        <img src={ratingsIcons[e["Source"]][0]} />
                         <span>{e.Value}</span>
                     </div>;
                 });
@@ -104,16 +93,16 @@ function MoviePage({movieId}){
             <div className="gridPoster">
                 <img src={movie.Poster} />
                 <div className="watchFav">
-                    <div className="eyeIcon"><IoMdEye /></div>
+                    <div className="eyeIcon" ><IoMdEye /></div>
                     <div className="heartIcon"><IoIosHeart style={{verticalAlign: 'baseline'}}/></div>
                 </div>
             </div>
-            <h>{movie.Title} ({movie.Year})</h>
+            <h1>{movie.Title} ({movie.Year})</h1>
             <p className="movieRuntime">{movie.Runtime}</p>
             <p className="moviePlot">{movie.Plot}</p>
             <div className="movieInfo">
                 <div className="movieInfoElem"><span>Director: </span><span>{movie.Director}</span></div>
-                <div className="movieInfoElem"><span>Screenplay: </span>{filteredWriter()}</div>
+                <div className="movieInfoElem"><span>Writer: </span>{movie.Writer}</div>
                 <div className="movieInfoElem"><span>Genre: </span>{movie.Genre}</div>
                 <div className="movieInfoElem"><span>Country: </span>{movie.Country}</div>
                 <div className="movieInfoElem"><span>Released: </span>{movie.Released}</div>

@@ -9,7 +9,7 @@
 }
 
 
-.movieGrid h{
+.movieGrid h1 {
     grid-area: t;
     color: yellow;
 }
@@ -72,15 +72,18 @@
     border: 2px white solid;
 }
 
-.watchFav .heartIcon{
-    flex: 1;
 
+
+.watchFav * {
+    flex: 1;
+    padding-top: 2px;
+    padding-bottom: 0.5px;
 }
 
 .watchFav .heartIcon:hover {
     flex: 1;
     color: black;
-    background-color: yellow;
+    background-color: rgb(255, 0, 55);
 }
 
 .watchFav .eyeIcon{
