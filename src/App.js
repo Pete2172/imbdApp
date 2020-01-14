@@ -20,18 +20,15 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Internet Movie Database</h1>
-      </header>
-      <nav>
-        <ul>
-          <li>
-              <input type="text" value={search} placeholder="Type a title of a movie..." onChange={e => {setSearch(e.target.value); setMovieId("")}} />
-          </li>
-          <li>Your favourites</li>
-          <li>Watched</li>
-          <li>Recently viewed</li>
-        </ul>
+        <nav>
+            <input type="text" value={search} placeholder="Type a title of a movie..." onChange={e => {setSearch(e.target.value); setMovieId("")}} />
+            <ul>
+              <li>Your favourites</li>
+              <li>Watched</li>
+              <li>Recently viewed</li>
+            </ul>
         </nav>
+      </header>
 
       <main>
         <div className="filmPage">
