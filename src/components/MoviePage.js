@@ -60,6 +60,7 @@ function MoviePage({movieId, isFav, isWatched, addToFavWatched}){
             addToFavWatched(id, option);
             setFav(!fav);
         }
+        console.log(fav);
     }, [addToFavWatched]);
 
     useEffect(() => {
