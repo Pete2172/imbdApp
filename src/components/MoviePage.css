@@ -75,8 +75,6 @@
     margin: 5px 5px 5px 5px;
 }
 
-
-
 .watchFav > * {
     flex: 1;
     padding-top: 2px;
@@ -89,6 +87,11 @@
     flex: 1;
     color: black;
     background-color: rgb(255, 0, 55);
+}
+
+.watchFav .eyeIcon_select{
+    flex: 1;
+    color: chartreuse;
 }
 
 .watchFav .eyeIcon{

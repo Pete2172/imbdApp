@@ -13,6 +13,7 @@ function MovieSearch({title, onClickHandler}){
 
     useEffect(() => {
         setUrl(`https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=${title}`);
+        console.log("SSStitle");
     }, [title]);
 
     useEffect(() => {
@@ -34,6 +35,7 @@ function MovieSearch({title, onClickHandler}){
         }
         defFetch();
     }, [url]);
+
     if(movies !== null){
         if(!movies.hasOwnProperty("Error")){
             let index = 0;

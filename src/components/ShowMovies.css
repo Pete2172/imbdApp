@@ -1,0 +1,9 @@
+.moviesSet {
+    display: flex;
+    flex-direction: column;
+}
+
+.moviesSet > * {
+    flex: 1;
+    max-height: 500px;
+}

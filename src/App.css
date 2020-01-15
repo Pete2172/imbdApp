@@ -77,8 +77,30 @@ input[type="text"]:focus{
   color: white;
 }
 
+.filmPage {
+  display: flex;
+}
 
 
+
+
+@media (max-width: 600px){
+  nav{
+    flex-direction: column;
+  }
+
+  ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0;
+    width: 50%;
+    height: 40px;
+    margin: 0;
+    overflow: hidden;
+  }
+}
 
 
 

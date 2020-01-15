@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {IoMdEye, IoIosHeart} from 'react-icons/io';
 import './MoviePage.css';
 
 
-function MoviePage({movieId, isFav, isWatched}){
+function MoviePage({movieId, isFav, isWatched, addToFavWatched}){
 
     const ratingsIcons = {"Internet Movie Database": ["https://icons-for-free.com/iconfiles/png/512/films+imdb+internet+movie+database+movie+television+icon-1320192452769839815.png", 0],
                           "Rotten Tomatoes": ["https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png", 1],
@@ -48,9 +48,20 @@ function MoviePage({movieId, isFav, isWatched}){
         "Website":"",
         "Response":"",
         });
+
+    const [watch, setWatch] = useState(isWatched);
+
+    const addToWatchFavs = useCallback((id, option) => {
+        addToFavWatched(id, option);
+        setWatch(!watch);
+    }, [addToFavWatched]);
+
+    useEffect(() => {
+
+    }, [watch]);
     
     useEffect(() => {
-        const fetchMovieData = async () =>{
+        const fetchMovieData = async () => {
             fetch(`https://movie-database-imdb-alternative.p.rapidapi.com/?i=${movieId}&r=json`, {
 	            "method": "GET",
 	            "headers": {
@@ -93,7 +104,7 @@ function MoviePage({movieId, isFav, isWatched}){
             <div className="gridPoster">
                 <img src={movie.Poster} />
                 <div className="watchFav">
-                    <div className="eyeIcon" ><IoMdEye /></div>
+                    <div className={(watch === true) ? "eyeIcon_select" : "eyeIcon"} onClick={() => addToWatchFavs(movieId, "watch") }><IoMdEye /></div>
                     <div className="heartIcon"><IoIosHeart /></div>
                 </div>
             </div>
@@ -101,7 +112,7 @@ function MoviePage({movieId, isFav, isWatched}){
             <p className="movieRuntime">{movie.Runtime}</p>
             <p className="moviePlot">{movie.Plot}</p>
             <div className="movieInfo">
-                <div className="movieInfoElem"><span>Director: </span><span>{movie.Director}</span></div>
+            <div className="movieInfoElem"><span>Director: </span><span>{movie.Director}</span></div>
                 <div className="movieInfoElem"><span>Writer: </span>{movie.Writer}</div>
                 <div className="movieInfoElem"><span>Genre: </span>{movie.Genre}</div>
                 <div className="movieInfoElem"><span>Country: </span>{movie.Country}</div>
