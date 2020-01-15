@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MovieSearch from './components/MovieSearch.js';
@@ -15,7 +15,6 @@ function App() {
 
   const [whichPage, setWhichPage] = useState("search");
 
-  const pagesArray = {"search": search, "moviePage": }
 
   const chooseMovie = (id) => {
     setMovieId(id);
@@ -31,6 +30,9 @@ function App() {
       setWatched(watched.filter(e => e !== id));
     }
   }
+//ShowMovies({elements, favs, watched, setFavsWatched})
+
+  const pageItems = {"favs": favs, "watched": watched, "viewed": viewed};
 
   const page = (()=> {
     switch(whichPage){
@@ -38,18 +40,8 @@ function App() {
         return <MovieSearch title={search} onClickHandler={chooseMovie} />;
       case "moviePage":
         return <MoviePage movieId = {movieId} addToFavWatched={addToFavWatch} isWatched={watched.includes(movieId)} />;
-      case "favs":
-        return (favs !== null) ? (favs.map(e => {
-          return <MoviePage movieId = {e}  addToFavWatched={addToFavWatch} /> 
-        })) : <p>You haven't added any movies to favourites!</p> ;
-      case "watched":
-        return (watched.length > 0) ? (watched.map(e => {
-          return <MoviePage movieId = {e}  addToFavWatched={addToFavWatch} isWatched={watched.includes(movieId)} /> 
-        })) : <p>You haven't added any movies to watched films!</p> ;
-      case "viewed":
-        return (viewed.length > 0) ? (viewed.map(e => {
-          return <MoviePage movieId = {e}  addToFavWatched={addToFavWatch} /> 
-        })) : <h1>You haven't viewed any movies recently.</h1> ;
+      default:
+        return <ShowMovies elements={pageItems[whichPage]} favourites={favs} watch={watched} setFavsWatched={addToFavWatch} />;
     }
     
   })();

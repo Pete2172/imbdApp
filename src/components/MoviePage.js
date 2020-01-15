@@ -49,16 +49,22 @@ function MoviePage({movieId, isFav, isWatched, addToFavWatched}){
         "Response":"",
         });
 
-    const [watch, setWatch] = useState(isWatched);
-
+    const [watch, setWatch] = useState(isWatched);  // watched movie state
+    const [fav, setFav] = useState(isFav);          // favourite movie state
     const addToWatchFavs = useCallback((id, option) => {
-        addToFavWatched(id, option);
-        setWatch(!watch);
+        if(option === "watch"){
+            addToFavWatched(id, option);
+            setWatch(!watch);
+        }
+        else{
+            addToFavWatched(id, option);
+            setFav(!fav);
+        }
     }, [addToFavWatched]);
 
     useEffect(() => {
 
-    }, [watch]);
+    }, [watch, fav]);
     
     useEffect(() => {
         const fetchMovieData = async () => {
@@ -105,7 +111,7 @@ function MoviePage({movieId, isFav, isWatched, addToFavWatched}){
                 <img src={movie.Poster} />
                 <div className="watchFav">
                     <div className={(watch === true) ? "eyeIcon_select" : "eyeIcon"} onClick={() => addToWatchFavs(movieId, "watch") }><IoMdEye /></div>
-                    <div className="heartIcon"><IoIosHeart /></div>
+                    <div className={(fav === true) ? "heartIcon_select" : "heartIcon:"} onClick={() => addToWatchFavs(movieId, "fav") }><IoIosHeart /></div>
                 </div>
             </div>
             <h1>{movie.Title} ({movie.Year})</h1>

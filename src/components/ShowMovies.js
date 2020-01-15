@@ -3,7 +3,7 @@ import MoviePage from './MoviePage.js';
 import './ShowMovies.css';
 
 
-function ShowMovies({elements, favs, watched, setFavsWatched}){
+function ShowMovies({elements, favourites, watch, setFavsWatched, messageError}){
 
     const [elems, setElems] = useState(elements);
 
@@ -13,8 +13,9 @@ function ShowMovies({elements, favs, watched, setFavsWatched}){
     }, [setFavsWatched]);
 
    // movieId, isFav, isWatched, addToFavWatched
-    const movies = (elements.map(e => {
-        return <MoviePage movieId={e} isFav={favs.includes(e)} isWatched={watched.includes(e)} addToFavWatched={setFW} />
+   console.log(elements);
+    const movies = (() => elements.map(e => {
+        return <MoviePage movieId={e} isFav={favourites.includes(e)} isWatched={watch.includes(e)} addToFavWatched={setFW} />;
     }))();
 
     return(
@@ -23,4 +24,6 @@ function ShowMovies({elements, favs, watched, setFavsWatched}){
         </div>
     );
 }
+
+export default ShowMovies;
 
