@@ -4,6 +4,7 @@ import './App.css';
 import MovieSearch from './components/MovieSearch.js';
 import MoviePage from './components/MoviePage.js';
 import ShowMovies from './components/ShowMovies.js';
+import NavBar from './components/NavBar.js';
 
 
 function App() {
@@ -52,6 +53,16 @@ function App() {
     setWhichPage(whichPage);
   }
 
+  const selectPage = (type) => {
+    setWhichPage(type);
+  };
+
+  const changeInput = (e) => {
+    setSearch(e); 
+    setMovieId(""); 
+    setWhichPage("search");
+  };
+
   const pageItems = {"favs": favs, "watched": watched, "viewed": viewed};
 
   const page = (()=> {
@@ -67,14 +78,7 @@ function App() {
   })();
 
   const navBar = <header>
-  <nav>
-      <input type="text" value={search} placeholder="Type a title of a movie..." onChange={e => {setSearch(e.target.value); setMovieId(""); setWhichPage("search")}} />
-      <ul>
-        <li onClick={() => setWhichPage("favs")}>Favourites</li>
-        <li onClick={()=> setWhichPage("watched")}>Watched</li>
-        <li onClick={()=> setWhichPage("viewed")}>Recently viewed</li>
-      </ul>
-  </nav>
+      <NavBar onClickHandler={selectPage} onChangeHandler = {changeInput} />
   </header>;
 
   return (

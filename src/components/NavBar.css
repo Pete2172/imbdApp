@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 50%;
+    height: 40px;
+}
+
+li {
+  color: black;
+  font-weight: bold;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  letter-spacing: 2px;
+  border: 2px solid black;
+  border-radius: 25px 0 25px 0px;
+  margin: 2px;
+}
