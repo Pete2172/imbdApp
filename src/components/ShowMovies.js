@@ -3,23 +3,16 @@ import MoviePage from './MoviePage.js';
 import './ShowMovies.css';
 
 
-function ShowMovies({elements, favourites, watch, setFavsWatched, messageError}){
+function ShowMovies({elements, favourites, watch, setFavs, setWatched}){
 
-    const [elems, setElems] = useState(elements);
-
-    const setFW = useCallback((id, type) => {
-        
-        setFavsWatched(id, type);
-    }, [setFavsWatched]);
-
-   // movieId, isFav, isWatched, addToFavWatched
-   console.log(elements);
+       
     const movies = (() => elements.map(e => {
-        return <MoviePage movieId={e} isFav={favourites.includes(e)} isWatched={watch.includes(e)} addToFavWatched={setFW} />;
+        return <MoviePage movieId={e} isFav={favourites.includes(e)} isWatched={watch.includes(e)} addToWatched={setWatched} addToFav={setFavs} />;
     }))();
 
     return(
         <div className="moviesSet">
+            <p>The amount of founded titles: {elements.length}</p>
             {movies}
         </div>
     );

@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MovieSearch from './components/MovieSearch.js';
 import MoviePage from './components/MoviePage.js';
 import ShowMovies from './components/ShowMovies.js';
 
+
 function App() {
 
   const [search, setSearch] = useState("");
   const [movieId, setMovieId] = useState("");
-  const [favs, setFavs] = useState(["tt4154796", "tt0268978"] );
-  const [watched, setWatched] = useState(["tt0268978"]);
+  const [favs, setFavs] = useState([]);
+  const [watched, setWatched] = useState([]);
   const [viewed, setViewed] = useState([]);
 
   const [whichPage, setWhichPage] = useState("search");
@@ -22,15 +23,26 @@ function App() {
     setWhichPage("moviePage");
   }
 
-  const addToFavWatch = (id, option) => {
+  const addToWatchedFilms = (id) => {
     if(!watched.includes(id)){
       setWatched([id, ...watched]);
     }
     else{
       setWatched(watched.filter(e => e !== id));
     }
+    setWhichPage(whichPage);
   }
-//ShowMovies({elements, favs, watched, setFavsWatched})
+
+  const addToFavourites = (id) => {
+    if(!favs.includes(id)){
+      setFavs([id, ...favs]);
+    }
+    else{
+      setFavs(favs.filter(e => e !== id));
+    }
+    console.log(`Favs: ${favs}`);
+    setWhichPage(whichPage);
+  }
 
   const pageItems = {"favs": favs, "watched": watched, "viewed": viewed};
 
@@ -39,9 +51,9 @@ function App() {
       case "search":
         return <MovieSearch title={search} onClickHandler={chooseMovie} />;
       case "moviePage":
-        return <MoviePage movieId = {movieId} addToFavWatched={addToFavWatch} isWatched={watched.includes(movieId)} />;
+        return <MoviePage movieId = {movieId} addToFav={addToFavourites} addToWatched={addToWatchedFilms} isWatched={watched.includes(movieId)} isFav={favs.includes(movieId)} />;
       default:
-        return <ShowMovies elements={pageItems[whichPage]} favourites={favs} watch={watched} setFavsWatched={addToFavWatch} />;
+        return <ShowMovies elements={pageItems[whichPage]} favourites={favs} watch={watched} setFavs={addToFavourites} setWatched={addToWatchedFilms} />;
     }
     
   })();
@@ -56,8 +68,6 @@ function App() {
       </ul>
   </nav>
   </header>;
-
-//<MoviePage movieId="tt0268978" addToFavWatched={addToFavWatch} isWatched={watched.includes(movieId)} />
 
   return (
     <div className="App">

@@ -3,7 +3,7 @@ import {IoMdEye, IoIosHeart} from 'react-icons/io';
 import './MoviePage.css';
 
 
-function MoviePage({movieId, isFav, isWatched, addToFavWatched}){
+function MoviePage({movieId, isFav, isWatched, addToFav, addToWatched}){
 
     const ratingsIcons = {"Internet Movie Database": ["https://icons-for-free.com/iconfiles/png/512/films+imdb+internet+movie+database+movie+television+icon-1320192452769839815.png", 0],
                           "Rotten Tomatoes": ["https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png", 1],
@@ -49,23 +49,14 @@ function MoviePage({movieId, isFav, isWatched, addToFavWatched}){
         "Response":"",
         });
 
-    const [watch, setWatch] = useState(isWatched);  // watched movie state
-    const [fav, setFav] = useState(isFav);          // favourite movie state
-    const addToWatchFavs = useCallback((id, option) => {
-        if(option === "watch"){
-            addToFavWatched(id, option);
-            setWatch(!watch);
-        }
-        else{
-            addToFavWatched(id, option);
-            setFav(!fav);
-        }
-    }, [addToFavWatched]);
+    const addToFavourites = useCallback((id) => { 
+        addToFav(id);
+    }, [addToFav]);
 
-    useEffect(() => {
+    const addToWatchedFilms = useCallback((id) => {
+            addToWatched(id);
+    }, [addToWatched]);
 
-    }, [watch, fav]);
-    
     useEffect(() => {
         const fetchMovieData = async () => {
             fetch(`https://movie-database-imdb-alternative.p.rapidapi.com/?i=${movieId}&r=json`, {
@@ -91,7 +82,7 @@ function MoviePage({movieId, isFav, isWatched, addToFavWatched}){
             if(movie.hasOwnProperty("Ratings")){
                 return movie.Ratings.map(e => {
                     return <div className="ratingsInfo" key={`ratingsIcon${ratingsIcons[e["Source"]][1]}`}>
-                        <img src={ratingsIcons[e["Source"]][0]} />
+                        <img src={ratingsIcons[e["Source"]][0]} alt="" />
                         <span>{e.Value}</span>
                     </div>;
                 });
@@ -108,10 +99,10 @@ function MoviePage({movieId, isFav, isWatched, addToFavWatched}){
     return (
         <div className="movieGrid">
             <div className="gridPoster">
-                <img src={movie.Poster} />
+                <img src={movie.Poster} alt="" />
                 <div className="watchFav">
-                    <div className={(watch === true) ? "eyeIcon_select" : "eyeIcon"} onClick={() => addToWatchFavs(movieId, "watch") }><IoMdEye /></div>
-                    <div className={(fav === true) ? "heartIcon_select" : "heartIcon:"} onClick={() => addToWatchFavs(movieId, "fav") }><IoIosHeart /></div>
+                    <div className={(isWatched === true) ? "eyeIcon_select" : "eyeIcon"} onClick={() => addToWatchedFilms(movieId) }><IoMdEye /></div>
+                    <div className={(isFav === true) ? "heartIcon_select" : "heartIcon"} onClick={() => addToFavourites(movieId) }><IoIosHeart /></div>
                 </div>
             </div>
             <h1>{movie.Title} ({movie.Year})</h1>
