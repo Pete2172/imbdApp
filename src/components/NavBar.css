@@ -1,23 +1,24 @@
 nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    min-height: 10vh;
 }
 
 ul {
     list-style-type: none;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
     width: 50%;
-    height: 40px;
+    min-height: 5vh;
 }
 
 li {
   color: black;
   font-weight: bold;
-  width: 100%;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -25,4 +26,24 @@ li {
   border: 2px solid black;
   border-radius: 25px 0 25px 0px;
   margin: 2px;
+  overflow: visible;
+}
+
+li:hover{
+    color: yellow;
+    background-color: black;
+}
+
+input[type="text"]{
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+  
+input[type="text"]:focus{
+    background-color: grey;
+    color: white;
 }
