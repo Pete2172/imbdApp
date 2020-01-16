@@ -70,7 +70,7 @@ function App() {
       case "search":
         return <MovieSearch title={search} onClickHandler={chooseMovie} />;
       case "moviePage":
-        return <MoviePage movieId = {movieId} addToFav={addToFavourites} addToWatched={addToWatchedFilms} isWatched={watched.includes(movieId)} isFav={favs.includes(movieId)} />;
+        return <ShowMovies elements={[movieId]} favourites={favs} watch={watched} setFavs={addToFavourites} setWatched={addToWatchedFilms} />;
       default:
         return <ShowMovies elements={pageItems[whichPage]} favourites={favs} watch={watched} setFavs={addToFavourites} setWatched={addToWatchedFilms} />;
     }
@@ -85,9 +85,7 @@ function App() {
     <div className="App">
       {navBar}
       <main>
-        <div className="filmPage">
           {page}
-        </div>
       </main>    
     </div>
   );

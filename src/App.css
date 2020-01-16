@@ -1,17 +1,13 @@
 .App {
   text-align: center;
   background-color: black;
-  color: white;
- 
+  color: white; 
 }
 
 header{
   background-color: rgb(253, 239, 39);
 }
 
-.filmPage {
-  display: flex;
-}
 
 
 

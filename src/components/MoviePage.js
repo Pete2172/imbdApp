@@ -97,7 +97,7 @@ function MoviePage({movieId, isFav, isWatched, addToFav, addToWatched}){
     })();
 
     return (
-        <div className="movieGrid">
+        <div className="movieData">
             <div className="gridPoster">
                 <img src={movie.Poster} alt="" />
                 <div className="watchFav">
@@ -105,21 +105,24 @@ function MoviePage({movieId, isFav, isWatched, addToFav, addToWatched}){
                     <div className={(isFav === true) ? "heartIcon_select" : "heartIcon"} onClick={() => addToFavourites(movieId) }><IoIosHeart /></div>
                 </div>
             </div>
-            <h1>{movie.Title} ({movie.Year})</h1>
-            <p className="movieRuntime">{movie.Runtime}</p>
-            <p className="moviePlot">{movie.Plot}</p>
-            <div className="movieInfo">
-            <div className="movieInfoElem"><span>Director: </span><span>{movie.Director}</span></div>
-                <div className="movieInfoElem"><span>Writer: </span>{movie.Writer}</div>
-                <div className="movieInfoElem"><span>Genre: </span>{movie.Genre}</div>
-                <div className="movieInfoElem"><span>Country: </span>{movie.Country}</div>
-                <div className="movieInfoElem"><span>Released: </span>{movie.Released}</div>
-                <div className="movieInfoElem"><span>Rating: </span>{movie.Rated}</div>
-                <div className="movieInfoElem"><span>Cast: </span>{movie.Actors}</div>
+            <div className="movieDetails">
+                <h1>{movie.Title} ({movie.Year})</h1>
+                <p className="movieRuntime">{movie.Runtime}</p>
+                <div className="ratingsMovie">
+                    {ratings}
+                </div>
+                <p className="moviePlot">{movie.Plot}</p>
+                <div className="movieInfo">
+                <div className="movieInfoElem"><span>Director: </span><p>{movie.Director}</p></div>
+                    <div className="movieInfoElem"><span>Writer: </span><p>{movie.Writer}</p></div>
+                    <div className="movieInfoElem"><span>Genre: </span><p>{movie.Genre}</p></div>
+                    <div className="movieInfoElem"><span>Country: </span><p>{movie.Country}</p></div>
+                    <div className="movieInfoElem"><span>Released: </span><p>{movie.Released}</p></div>
+                    <div className="movieInfoElem"><span>Rating: </span><p>{movie.Rated}</p></div>
+                    <div className="movieInfoElem"><span>Cast: </span><p>{movie.Actors}</p></div>
+                </div>
             </div>
-            <div className="ratingsMovie">
-                {ratings}
-            </div>
+
         </div>
     )
 }

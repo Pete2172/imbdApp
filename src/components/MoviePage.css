@@ -1,140 +1,115 @@
-
-.movieGrid .gridPoster{
-    grid-area: p;
-    margin: 20px 20px 20px 20px;
-}
-
-.moviePoster > img{
-    border: 2px white solid;
-}
-
-.movieGrid .gridPoster img:hover{
-    opacity: 0.6;
-}
-
-
-.movieGrid h1 {
-    grid-area: t;
-    color: yellow;
-}
-
-.movieGrid .movieRuntime{
-    grid-area: r;
-    max-height: 5px;
-}
-
-.movieGrid .moviePlot{
-    grid-area: d;
-}
-
-.movieInfo{
-    grid-area: i;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+.movieData {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    border: 2px solid white;
+    justify-content: space-around;
+    border: 2px yellow solid;
+    width: 95%;
+}
+
+.gridPoster {
     margin: 10px 10px 10px 10px;
 }
 
-
-
-.ratingsMovie{
-    grid-area: g;
+.gridPoster img {
+    size: 100%;
+    margin: 10px 10px 10px 10px;
     display: flex;
+}
+
+.gridPoster > .watchFav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px yellow solid;
+}
+
+.movieDetails {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.movieDetails > * {
+    flex: 1;
+}
+
+.movieDetails h1 {
+    color: yellow;
+}
+
+.ratingsMovie {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .ratingsMovie .ratingsInfo {
-    flex: 1;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.ratingsMovie img {
+    max-width: 55px;
+}
+
+.movieInfo {
     display: flex;
+    flex-direction: column;
 }
-
-.ratingsMovie .ratingsInfo img {
-    max-width: 60px;
-    max-height: 60px;
-    align-self: center;
-    overflow: hidden;
-}
-
-.movieInfoElem {
+.movieInfoElem{
+    flex: 1;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
 }
 
-.movieInfoElem span:nth-of-type(1) {
+.movieInfoElem > * {
+    flex: 1;
+}
+
+.movieInfoElem > span {
     color: yellow;
-    margin: 0 10px 2px 2px;
-}
-.movieInfoElem span:nth-of-type(2){
-    align-items: flex-end;
 }
 
-.watchFav {
-    display: flex;
-    grid-area: f;
-    margin: 5px 5px 5px 5px;
+.moviePlot {
+    border: 1px white double;
+    margin-left: 10px;
+    margin-right: 10px;
 }
+
+/************************ icons CSS *************/
 
 .watchFav > * {
     flex: 1;
-    padding-top: 2px;
-    padding-bottom: 0.5px;
-    margin: 2px 2px 2px 2px;
-    border: 2px solid white;
+    background-color: rgb(0, 0, 0);
 }
 
-.watchFav .heartIcon:hover {
+.watchFav > *:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+.eyeIcon_select{
     flex: 1;
-    color: black;
-    background-color: rgb(255, 0, 55);
+    color: rgb(16, 156, 16);
+    border-right: 2px yellow solid;
+} 
+
+.eyeIcon{
+    color: white;
+    border-right: 2px yellow solid;
 }
 
-.watchFav .eyeIcon_select{
+.heartIcon_select{
     flex: 1;
-    color: chartreuse;
+    color: rgb(211, 51, 51);
+
+} 
+
+.heartIcon{
+    color: white;
 }
-
-.watchFav .eyeIcon{
-    flex: 1;
-}
-
-.watchFav .heartIcon_select{
-    flex: 1;
-    color: rgb(255, 0, 43);
-}
-
-.watchFav .heartIcon{
-    flex: 1;
-}
-
-
-.watchFav .eyeIcon:hover{
-    color: rgb(0, 0, 0);
-    background-color: rgb(43, 211, 43);
-}
-
-
-.movieGrid{
-    border: 1px solid yellow;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    grid-row-gap: 5px;
-    grid-column-gap: 50px;
-    grid-template-areas: 
-    "p t t t t"
-    "p g g g g"
-    "p . r r ."
-    "p d d d d"
-    "p i i i i"
-    "p i i i i"
-    "f i i i i"
-    ". i i i i"
-    ". i i i i"
-    ;
-}
-
-
-
-
 
