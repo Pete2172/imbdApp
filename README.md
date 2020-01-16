@@ -1,5 +1,10 @@
 # Result can be seen at:
  https://pete2172.github.io/imbdApp/
+ 
+ # Info:
+Web application was created by using React JS library. It uses Internet Movie Database API. The app allows user to search movies by given title. User can see the details of chosen movie. The app also allows user to check movie as watched or favourite. These data is stored in browser's local storage. \
+\
+The icons used in app come from react-icons package.
 
 
 # Screens:
@@ -11,7 +16,3 @@ Searching a movie:
 ![Example3](https://raw.githubusercontent.com/Pete2172/imbdApp/master/serach_resp.PNG)
 \
 
-# Info:
-Web application was created by using React JS library. It uses Internet Movie Database API. The app allows user to search movies by given title. User can see the details of chosen movie. The app also allows user to check movie as watched or favourite. These data is stored in browser's local storage. \
-\
-The icons used in app come from react-icons package.
