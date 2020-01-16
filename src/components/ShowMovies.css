@@ -1,10 +1,13 @@
 .moviesSet {
     display: flex;
+    align-items: center;
+    justify-items: center;
     flex-direction: column;
 }
 
 .moviesSet > * {
     flex: 1;
     max-height: 600px;
-    margin: 20px 20px 20px 20px;
+    margin: 10px 10px 10px 10px;
 }
+

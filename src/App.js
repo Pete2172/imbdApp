@@ -10,11 +10,19 @@ function App() {
 
   const [search, setSearch] = useState("");
   const [movieId, setMovieId] = useState("");
-  const [favs, setFavs] = useState([]);
-  const [watched, setWatched] = useState([]);
+  const [favs, setFavs] = useState(JSON.parse(localStorage.getItem('favs')) || []);
+  const [watched, setWatched] = useState(JSON.parse(localStorage.getItem('watched')) || []);
   const [viewed, setViewed] = useState([]);
 
   const [whichPage, setWhichPage] = useState("search");
+
+  useEffect(() => {
+    localStorage.setItem('favs', JSON.stringify(favs));
+  }, [favs]);
+
+  useEffect(() => {
+    localStorage.setItem('watched', JSON.stringify(watched));
+  }, [watched]);
 
 
   const chooseMovie = (id) => {

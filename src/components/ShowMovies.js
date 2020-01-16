@@ -12,7 +12,7 @@ function ShowMovies({elements, favourites, watch, setFavs, setWatched}){
 
     return(
         <div className="moviesSet">
-            <p>The amount of founded titles: {elements.length}</p>
+            <h2>The amount of found titles: {elements.length}</h2>
             {movies}
         </div>
     );
