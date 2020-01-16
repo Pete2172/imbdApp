@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/imbdApp/static/css/main.34451713.chunk.css",
+    "main.js": "/imbdApp/static/js/main.4c0cff2a.chunk.js",
+    "main.js.map": "/imbdApp/static/js/main.4c0cff2a.chunk.js.map",
+    "runtime-main.js": "/imbdApp/static/js/runtime-main.757f072f.js",
+    "runtime-main.js.map": "/imbdApp/static/js/runtime-main.757f072f.js.map",
+    "static/js/2.5f2b8a94.chunk.js": "/imbdApp/static/js/2.5f2b8a94.chunk.js",
+    "static/js/2.5f2b8a94.chunk.js.map": "/imbdApp/static/js/2.5f2b8a94.chunk.js.map",
+    "index.html": "/imbdApp/index.html",
+    "precache-manifest.a6f52e0ff36804f0df60d98c6734952f.js": "/imbdApp/precache-manifest.a6f52e0ff36804f0df60d98c6734952f.js",
+    "service-worker.js": "/imbdApp/service-worker.js",
+    "static/css/main.34451713.chunk.css.map": "/imbdApp/static/css/main.34451713.chunk.css.map",
+    "static/js/2.5f2b8a94.chunk.js.LICENSE": "/imbdApp/static/js/2.5f2b8a94.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.757f072f.js",
+    "static/js/2.5f2b8a94.chunk.js",
+    "static/css/main.34451713.chunk.css",
+    "static/js/main.4c0cff2a.chunk.js"
+  ]
+}
