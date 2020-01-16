@@ -27,6 +27,7 @@ li {
   border-radius: 25px 0 25px 0px;
   margin: 2px;
   overflow: visible;
+  background-color: rgb(255, 197, 37);
 }
 
 li:hover{

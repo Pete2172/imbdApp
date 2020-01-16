@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import MovieSearch from './components/MovieSearch.js';
-import MoviePage from './components/MoviePage.js';
 import ShowMovies from './components/ShowMovies.js';
 import NavBar from './components/NavBar.js';
 
@@ -49,7 +47,6 @@ function App() {
     else{
       setFavs(favs.filter(e => e !== id));
     }
-    console.log(`Favs: ${favs}`);
     setWhichPage(whichPage);
   }
 

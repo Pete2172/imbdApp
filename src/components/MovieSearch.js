@@ -53,11 +53,11 @@ function MovieSearch({title, onClickHandler}){
             return <div className="moviesList">{moviesList}</div>
         }
         else{
-            return <p>Find your movie...</p>
+            return <p>Find a movie...</p>
         }
     }
     else{
-        return <p>Find your movie...</p>
+        return <p>Find a movie...</p>
     }
 }
 
